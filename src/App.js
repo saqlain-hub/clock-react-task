@@ -4,17 +4,31 @@ function App() {
 
   let time = new Date().toLocaleTimeString();
 
-  const [ctime, setCtime] = useState(time);
+  const [gTime, setGtime] = useState(time);
+  const [aTime, setAtime] = useState(time);
 
   const updateTime = () => {
     time = new Date().toLocaleTimeString();
-    setCtime(time);
+    setGtime(time);
   }
+
+  setInterval(() => {
+    time = new Date().toLocaleTimeString();
+    setAtime(time);
+  })
   
   return (
-    <div className='container'>
-      <h1> {ctime} </h1>
-      <button onClick={updateTime} > Get Time</button>
+    <div className='wrapper'>
+      <div>
+        <h1>Automatic time</h1>
+        <h1> {aTime} </h1>
+        {/* <button onClick={updateTime} > Get Time</button> */}
+      </div>
+      <div>
+        <h1>Click to get time</h1>
+        <h1> {gTime} </h1>
+        <button onClick={updateTime} > Get Time</button>
+      </div>
     </div>
   );
 }
